@@ -1,5 +1,4 @@
 import setuptools
-import os
 
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
@@ -16,7 +15,7 @@ setuptools.setup(
     description="A python package containing utility classes for d4k microservices",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    install_requires=['simple-error-log', "httpx", "python-dotenv"],
+    install_requires=['simple_error_log', "httpx", "python-dotenv"],
     packages=setuptools.find_packages(where="src"),
     package_dir={"": "src"},
     tests_require=["pytest", "pytest-cov", "pytest-mock", "pytest-httpx", "pytest-asyncio", "ruff"],
