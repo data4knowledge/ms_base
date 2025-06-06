@@ -1,7 +1,7 @@
 import pytest
 from unittest.mock import patch
 from d4k_ms_base.errors_and_logging import ErrorsAndLogging
-from d4k_sel.error_location import ErrorLocation
+from simple_error_log.error_location import ErrorLocation
 
 class MockErrorLocation(ErrorLocation):
     def format(self):

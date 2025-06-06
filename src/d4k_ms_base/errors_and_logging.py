@@ -1,8 +1,8 @@
 import traceback
 import warnings
 from d4k_ms_base.logger import application_logger
-from d4k_sel.errors import Errors
-from d4k_sel.error_location import ErrorLocation
+from simple_error_log.errors import Errors
+from simple_error_log.error_location import ErrorLocation
 
 
 class ErrorsAndLogging():
@@ -22,15 +22,15 @@ class ErrorsAndLogging():
     application_logger.info(self._format(message, location.format()))
 
   def exception(self, message: str, e: Exception, location: ErrorLocation):
-    self.errors.add(f"Exception. {message}. See log for additional details.", location, self.errors.ERROR)
-    application_logger.error(f"Exception '{e}' raised\n\n{self._format(message, location)}\n\n{traceback.format_exc()}")
+    self.errors.add(f"Exception. {message}. See log for additional details.", location, "", self.errors.ERROR)
+    application_logger.error(f"Exception '{e}' raised\n\n{self._format(message, str(location))}\n\n{traceback.format_exc()}")
 
   def warning(self, message: str, location: ErrorLocation):
-    self.errors.add(message, location, self.errors.WARNING)
+    self.errors.add(message, location, "", self.errors.WARNING)
     application_logger.warning(self._format(message, location.format()))
 
   def error(self, message: str, location: ErrorLocation):
-    self.errors.add(message, location, self.errors.ERROR)
+    self.errors.add(message, location, "", self.errors.ERROR)
     application_logger.error(self._format(message, location.format()))
 
   def deprecated(self, message):
