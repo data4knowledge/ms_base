@@ -21,7 +21,7 @@ class ServiceEnvironment:
     @property
     def filename(self):
         return self._filename
-    
+
     def environment(self):
         return (
             os.environ["PYTHON_ENVIRONMENT"]
@@ -37,4 +37,4 @@ class ServiceEnvironment:
 
     def _load(self):
         self._filename = f".{self.environment()}_env"
-        load_dotenv(self._filename)
+        load_dotenv(self._filename, override=True)

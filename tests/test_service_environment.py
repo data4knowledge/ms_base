@@ -47,4 +47,6 @@ def test_filename_property():
     """Test that filename property returns the correct filename based on environment"""
     env = ServiceEnvironment()
     expected_filename = f".{env.environment()}_env"
-    assert env.filename == expected_filename, f"Expected filename to be {expected_filename}"
+    assert env.filename == expected_filename, (
+        f"Expected filename to be {expected_filename}"
+    )

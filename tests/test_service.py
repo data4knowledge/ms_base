@@ -188,4 +188,4 @@ async def test_files_exception(httpx_mock: HTTPXMock, caplog, mocker):
     assert await service.file_post("upload_endpoint", files={"x": "data"}) == expected
     args, kwargs = al.call_args_list[-1]
     assert args[0] == "HTTPX 'POST (file)' operation raised exception ReadTimeout"
-    assert isinstance(args[1], ReadTimeout) 
+    assert isinstance(args[1], ReadTimeout)
