@@ -1,29 +1,29 @@
 import os
 from dotenv import load_dotenv
-from d4k_ms_base.logger import application_logger
 
-class ServiceEnvironment():
-  
-  def __init__(self):
-    self.load()
 
-  def environment(self):
-    if 'PYTHON_ENVIRONMENT' in os.environ:
-      return os.environ['PYTHON_ENVIRONMENT']
-    else:
-      return "development"
+class ServiceEnvironment:
+    def __init__(self):
+        self._filename = None
+        self._load()
 
-  def production(self):
-    return self.environment() == "production"
+    @property
+    def filename(self):
+        return self._filename
+    
+    def environment(self):
+        return (
+            os.environ["PYTHON_ENVIRONMENT"]
+            if "PYTHON_ENVIRONMENT" in os.environ
+            else "development"
+        )
 
-  def get(self, name):
-    if name in os.environ:
-      return os.environ[name]
-    else:
-      application_logger.error(f"Missing environment variable '{name}' requested")
-      return ""
+    def production(self) -> bool:
+        return self.environment() == "production"
 
-  def load(self):
-    filename = f".{self.environment()}_env"
-    application_logger.debug(f"Environment file '{filename}' read")
-    load_dotenv(filename)
+    def get(self, name: str) -> str | None:
+        return os.environ[name] if name in os.environ else None
+
+    def _load(self):
+        self._filename = f".{self.environment()}_env"
+        load_dotenv(self._filename)

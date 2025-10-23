@@ -10,8 +10,9 @@ project_root = Path(__file__).parent.parent.absolute()
 if str(project_root) not in sys.path:
     sys.path.insert(0, str(project_root))
 
+
 @pytest.fixture(scope="session", autouse=True)
 def tests_setup_and_teardown():
-  os.environ["PYTHON_ENVIRONMENT"] = "test"
-  yield
-  os.environ["PYTHON_ENVIRONMENT"] = "development"
+    os.environ["PYTHON_ENVIRONMENT"] = "test"
+    yield
+    os.environ["PYTHON_ENVIRONMENT"] = "development"

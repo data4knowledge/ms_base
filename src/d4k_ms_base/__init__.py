@@ -4,9 +4,9 @@ from d4k_ms_base.service_environment import ServiceEnvironment
 from d4k_ms_base.service import Service
 
 __all__ = [
-  'ErrorsAndLogging',
-  'Logger',
-  'application_logger',
-  'Service',
-  'ServiceEnvironment'
+    "ErrorsAndLogging",
+    "Logger",
+    "application_logger",
+    "Service",
+    "ServiceEnvironment",
 ]
