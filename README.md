@@ -14,7 +14,7 @@ pip install d4k-ms-base
 
 Use pip to install build and twine. Use the following commands to build
 
-```python -m build``` 
+```python3 -m build --sdist --wheel``` 
 
 and upload to pypi.org using the command
 
