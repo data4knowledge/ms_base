@@ -41,3 +41,10 @@ def test_singleton_behavior():
     instance1 = ServiceEnvironment()
     instance2 = ServiceEnvironment()
     assert instance1 is instance2, "ServiceEnvironment should return the same instance"
+
+
+def test_filename_property():
+    """Test that filename property returns the correct filename based on environment"""
+    env = ServiceEnvironment()
+    expected_filename = f".{env.environment()}_env"
+    assert env.filename == expected_filename, f"Expected filename to be {expected_filename}"
