@@ -34,3 +34,10 @@ def test_production():
 
 def test_environment_missing():
     assert ServiceEnvironment().get("SOMETHING2") is None
+
+
+def test_singleton_behavior():
+    """Test that ServiceEnvironment is a singleton"""
+    instance1 = ServiceEnvironment()
+    instance2 = ServiceEnvironment()
+    assert instance1 is instance2, "ServiceEnvironment should return the same instance"
